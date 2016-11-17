@@ -24,6 +24,8 @@ requirements:
     - mpich
     - petsc 3.7.*
     - petsc4py 3.7.*
+    - slepc 3.7.*
+    - slepc4py 3.7.*
     - fenics 2016.1.*
     - libadjoint 2016.1.*
 

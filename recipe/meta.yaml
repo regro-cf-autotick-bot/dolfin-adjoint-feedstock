@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install
   skip: True  # [win or py3k]
 
@@ -24,6 +24,8 @@ requirements:
     - mpich
     - petsc 3.7.*
     - petsc4py 3.7.*
+    - slepc 3.7.*
+    - slepc4py 3.7.*
     - fenics 2016.1.*
     - libadjoint 2016.1.*
 

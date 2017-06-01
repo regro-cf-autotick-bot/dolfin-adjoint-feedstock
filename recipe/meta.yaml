@@ -1,6 +1,6 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2016.2.0" %}
-{% set sha256 = "be997f828482e1c73923bcd66cebe487fc8cba1bd4da4e08ea0f223baad383c7" %}
+{% set version = "2017.1.0" %}
+{% set sha256 = "01eac63c9efd92e69dc0c9f34714ef73b62678cf3d026a0319971fc032e81a44" %}
 
 package:
   name: {{ name|lower }}
@@ -10,11 +10,9 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://bitbucket.org/{{ name }}/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - python3.patch
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install
   skip: True  # [win]
 
@@ -28,8 +26,8 @@ requirements:
     - petsc4py 3.7.*
     - slepc 3.7.*
     - slepc4py 3.7.*
-    - fenics 2016.2.*
-    - libadjoint 2016.2.*
+    - fenics 2017.1.*
+    - libadjoint 2017.1.*
 
 test:
   imports:

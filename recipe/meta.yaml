@@ -1,6 +1,8 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2017.1.0" %}
-{% set sha256 = "01eac63c9efd92e69dc0c9f34714ef73b62678cf3d026a0319971fc032e81a44" %}
+{% set version = "2017.2.0" %}
+{% set sha256 = "4054c88829170624e3925bbe6d9ea08387a970826da7fcf1f7bf2b3b4e88736c" %}
+{% set petsc_version = "3.8.*" %}
+{% set fenics_version = "2017.2.*" %}
 
 package:
   name: {{ name|lower }}
@@ -22,12 +24,12 @@ requirements:
   run:
     - python
     - mpich
-    - petsc 3.7.*
-    - petsc4py 3.7.*
-    - slepc 3.7.*
-    - slepc4py 3.7.*
-    - fenics 2017.1.*
-    - libadjoint 2017.1.*
+    - petsc {{ petsc_version }}
+    - petsc4py {{ petsc_version }}
+    - slepc {{ petsc_version }}
+    - slepc4py {{ petsc_version }}
+    - fenics {{ fenics_version }}
+    - libadjoint {{ version }}
 
 test:
   imports:

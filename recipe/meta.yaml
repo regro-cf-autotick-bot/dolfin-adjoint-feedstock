@@ -23,10 +23,10 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.5
     - pip
   run:
-    - python
+    - python >=3.5
     - fenics {{ fenics_version }}
     - moola >=0.1.6
     - scipy

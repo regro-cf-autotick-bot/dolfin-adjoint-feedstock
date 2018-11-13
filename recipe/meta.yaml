@@ -1,8 +1,7 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2017.2.0" %}
-{% set sha256 = "4054c88829170624e3925bbe6d9ea08387a970826da7fcf1f7bf2b3b4e88736c" %}
-{% set petsc_version = "3.8.*" %}
-{% set fenics_version = "2017.2.*" %}
+{% set version = "2018.1.0" %}
+{% set sha256 = "e1a0a8c2bffc641086445e63c513d5add35d2479a6ed673176b6f2f744e9e27e" %}
+{% set fenics_version = '.'.join(version.split('.')[:2] + ['*']) %}
 
 package:
   name: {{ name|lower }}
@@ -10,31 +9,33 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://bitbucket.org/{{ name }}/{{ name }}/downloads/{{ name }}-{{ version }}.tar.gz
+  url: https://bitbucket.org/{{ name }}/pyadjoint/get/{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    # patch merged upstream:
+    # https://bitbucket.org/dolfin-adjoint/pyadjoint/pull-requests/69
+    - dependencies.patch
 
 build:
   number: 0
-  script: python setup.py install
-  skip: True  # [win]
+  script: python -m pip install --no-deps .
+  noarch: python
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.5
+    - pip
   run:
-    - python
-    - mpich
-    - petsc {{ petsc_version }}
-    - petsc4py {{ petsc_version }}
-    - slepc {{ petsc_version }}
-    - slepc4py {{ petsc_version }}
+    - python >=3.5
     - fenics {{ fenics_version }}
-    - libadjoint {{ version }}
+    - moola >=0.1.6
+    - scipy
 
 test:
   imports:
     - dolfin_adjoint
     - fenics_adjoint
+    - pyadjoint
 
 about:
   home: http://www.dolfin-adjoint.org/

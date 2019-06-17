@@ -1,6 +1,6 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2018.1.0" %}
-{% set sha256 = "e1a0a8c2bffc641086445e63c513d5add35d2479a6ed673176b6f2f744e9e27e" %}
+{% set version = "2018.1.1" %}
+{% set sha256 = "64fd1dda0217a4d83af4ca146ede9c548195c802b523efcbd5110049ef85d46a" %}
 {% set fenics_version = '.'.join(version.split('.')[:2] + ['*']) %}
 
 package:

@@ -1,6 +1,6 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2018.1.1" %}
-{% set sha256 = "64fd1dda0217a4d83af4ca146ede9c548195c802b523efcbd5110049ef85d46a" %}
+{% set version = "2019.1.0" %}
+{% set sha256 = "94e5c05b44af237fe6c7bedab33ce019ba4bc0e8a82979c380f9a959e83ebadc" %}
 {% set fenics_version = '.'.join(version.split('.')[:2] + ['*']) %}
 
 package:
@@ -13,8 +13,6 @@ source:
   sha256: {{ sha256 }}
   patches:
     # patch merged upstream:
-    # https://bitbucket.org/dolfin-adjoint/pyadjoint/pull-requests/69
-    - dependencies.patch
 
 build:
   number: 0

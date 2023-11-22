@@ -34,7 +34,7 @@ test:
     - pytest
     - pip
   source_files:
-    - test
+    - tests
   imports:
     - dolfin_adjoint
     - fenics_adjoint

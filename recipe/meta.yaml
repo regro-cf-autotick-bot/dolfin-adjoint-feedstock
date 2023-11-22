@@ -46,7 +46,7 @@ test:
 
 about:
   home: https://www.dolfin-adjoint.org
-  license: LGPL-3.0
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: LICENSE
   summary: 'derives the discrete adjoint and tangent linear models'

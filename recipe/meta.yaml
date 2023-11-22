@@ -1,15 +1,14 @@
 {% set name = "dolfin-adjoint" %}
-{% set version = "2019.1.0" %}
-{% set sha256 = "94e5c05b44af237fe6c7bedab33ce019ba4bc0e8a82979c380f9a959e83ebadc" %}
-{% set fenics_version = '.'.join(version.split('.')[:2] + ['*']) %}
+{% set version = "2023.0.0" %}
+{% set sha256 = "809e30f37ad9fd14e5288aa092752ea83e6c2ee27e84359424c58ab7908b08e3" %}
+{% set fenics_version = "2019.1.*" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://bitbucket.org/{{ name }}/pyadjoint/get/{{ version }}.tar.gz
+  url: https://github.com/dolfin-adjoint/dolfin-adjoint/archive/refs/tags/{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     # patch merged upstream:
@@ -21,22 +20,30 @@ build:
 
 requirements:
   host:
-    - python >=3.5
+    - python >=3.8
     - pip
   run:
-    - python >=3.5
+    - python >=3.8
     - fenics {{ fenics_version }}
     - moola >=0.1.6
     - scipy
 
 test:
+  requires:
+    - pytest
+  source_files:
+    - test
   imports:
     - dolfin_adjoint
     - fenics_adjoint
     - pyadjoint
+  commands:
+    - pytest -vs tests/pyadjoint
+    - pytest -vs tests/fenics_adjoint/test_optimization_scipy.py
+
 
 about:
-  home: http://www.dolfin-adjoint.org/
+  home: https://www.dolfin-adjoint.org
   license: LGPL-3.0
   license_family: LGPL
   license_file: LICENSE
@@ -46,8 +53,8 @@ about:
     The dolfin-adjoint project automatically derives the discrete adjoint
     and tangent linear models from a forward model written in the Python
     interface to DOLFIN.
-  doc_url: http://www.dolfin-adjoint.org/en/latest/documentation/index.html
-  dev_url: https://bitbucket.org/dolfin-adjoint/dolfin-adjoint
+  doc_url: https://www.dolfin-adjoint.org/en/latest/documentation/index.html
+  dev_url: https://github.org/dolfin-adjoint/dolfin-adjoint
 
 extra:
   recipe-maintainers:

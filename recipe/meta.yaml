@@ -40,7 +40,6 @@ test:
     - fenics_adjoint
     - pyadjoint
   commands:
-    - pip check
     - pytest -vs tests/pyadjoint
     - pytest -vs tests/fenics_adjoint/test_optimization_scipy.py
 

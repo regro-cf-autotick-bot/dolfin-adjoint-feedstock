@@ -1,6 +1,7 @@
 {% set name = "dolfin-adjoint" %}
 {% set version = "2023.0.0" %}
-{% set sha256 = "809e30f37ad9fd14e5288aa092752ea83e6c2ee27e84359424c58ab7908b08e3" %}
+{% set post = ".post0" %}
+{% set sha256 = "bd6ee31e47043d0eecd854e31761dca867fa714bd9a09330258a382521ce3e5e" %}
 {% set fenics_version = "2019.1.*" %}
 
 package:
@@ -8,7 +9,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/dolfin-adjoint/dolfin-adjoint/archive/refs/tags/{{ version }}.tar.gz
+  url: https://github.com/dolfin-adjoint/dolfin-adjoint/archive/refs/tags/v{{ version }}{{ post }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     # patch merged upstream:
@@ -31,6 +32,7 @@ requirements:
 test:
   requires:
     - pytest
+    - pip
   source_files:
     - test
   imports:
@@ -38,6 +40,7 @@ test:
     - fenics_adjoint
     - pyadjoint
   commands:
+    - pip check
     - pytest -vs tests/pyadjoint
     - pytest -vs tests/fenics_adjoint/test_optimization_scipy.py
 

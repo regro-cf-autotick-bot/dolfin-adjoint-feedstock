@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dolfin-adjoint-
 
 Home: https://www.dolfin-adjoint.org
 
-Package license: LGPL-3.0
+Package license: LGPL-3.0-only
 
 Summary: derives the discrete adjoint and tangent linear models
 
